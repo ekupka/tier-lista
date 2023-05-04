@@ -1,0 +1,35 @@
+.row {
+    width: 100%;
+    display: flex;
+    background-color: #222222;
+}
+
+.row-header {
+    height: 6rem;
+    width: 6rem;
+}
+
+.row-body {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    gap: 12px;
+    background-color: #444444;
+}
+
+.row-container {
+    width: 800px;
+    background-color: #333333;
+}
+
+.colors {
+    color: #8A1A18;
+    color: #87401B;
+    color: #85631D;
+    color: #828220;
+    color: #619036;
+    color: #4C9D50;
+    color: #63AA8C;
+    color: #79B1B7;
+
+}
