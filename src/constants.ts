@@ -1,4 +1,4 @@
-import { Color } from "./types";
+import { Color } from "./types/types";
 
 export const defaultTierList = {
     rows: [

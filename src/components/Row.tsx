@@ -1,8 +1,8 @@
+import { ItemProps } from "@/types/types";
 import { ReactNode, useContext } from "react";
-import "./Row.css";
-import { useDrop } from "react-dnd";
-import { ItemProps } from "./types";
-import TierListContext from "./context";
+import { TierListContext } from "@/context";
+import { useDrag, useDrop } from "react-dnd";
+import "@/styles/Row.css";
 
 type RowProps = {
     id: string;
@@ -12,6 +12,16 @@ type RowProps = {
 
 export const Row = ({ thumbnail, id, children }: RowProps) => {
     const { moveItem } = useContext(TierListContext);
+    const [{ opacity }, dragRef] = useDrag(
+        () => ({
+            type: "row",
+            item: { id },
+            collect: (monitor) => ({
+                opacity: monitor.isDragging() ? 0.5 : 1,
+            }),
+        }),
+        []
+    );
 
     const [, drop] = useDrop<ItemProps>(() => ({
         accept: "item",
@@ -21,7 +31,7 @@ export const Row = ({ thumbnail, id, children }: RowProps) => {
     }));
 
     return (
-        <div className="row" key={id}>
+        <div className="row" key={id} ref={dragRef} style={{ opacity }}>
             <div className="row-header">{thumbnail}</div>
             <div className="row-body" ref={drop}>
                 {children}

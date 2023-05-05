@@ -5,7 +5,7 @@ export type ItemProps = {
 
 export type RowProps = {
     thumbnail: ThumbnailProps;
-    children: ItemProps[];
+    items: ItemProps[];
 };
 
 export type ThumbnailProps = {
@@ -23,13 +23,14 @@ export type TierListObject = {
         {
             thumbnail: {
                 text: string;
-                bg: Color;
+                bg: Color | string;
             };
             items: [
                 {
+                    id: string;
                     thumbnail: {
                         text: string;
-                        bg: Color;
+                        bg: Color | string;
                     };
                 }
             ];
@@ -37,9 +38,10 @@ export type TierListObject = {
     ];
     bench: [
         {
+            id: string;
             thumbnail: {
                 text: string;
-                bg: Color;
+                bg: Color | string;
             };
         }
     ];

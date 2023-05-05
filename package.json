@@ -2,7 +2,7 @@
   "name": "tier-lista",
   "homepage": "https://<username>.github.io/<repo>/",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.194",
+    "@types/node": "^20.0.0",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.57.1",

@@ -1,4 +1,4 @@
-import { Color } from "./types";
+import { Color } from "@/types";
 
 export const getRandomInt = () => (Math.random() * 1000000).toFixed(0);
 

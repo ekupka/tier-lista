@@ -1,4 +1,4 @@
-import { ThumbnailProps } from "./types";
+import { ThumbnailProps } from "@/types";
 
 export const Thumbnail = ({ text, bg }: ThumbnailProps) => {
     const isColor = (color: string) => {

@@ -1,6 +1,6 @@
+import { Color, ItemProps } from "@/types";
+import { getRandomColor, getRandomInt } from "@/utils";
 import { useState } from "react";
-import { Color, ItemProps } from "./types";
-import { getRandomColor, getRandomInt } from "./utils";
 
 export const NewItemDialog = ({ onClose, callback }: { onClose: () => void; callback: (item: ItemProps) => void }) => {
     const [name, setName] = useState(`${getRandomInt()}`);

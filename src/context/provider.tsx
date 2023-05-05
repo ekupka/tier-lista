@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { TierListContext } from "./TierList";
-import { ItemProps, TierListObject } from "./types";
-import { defaultTierList } from "./constants";
-import { remove, set, indexOf } from "lodash";
+import { defaultTierList } from "@/constants";
+import { indexOf, remove, set } from "lodash";
+import { ItemProps, TierListObject } from "@/types";
+import { TierListContext } from "@/context";
 
-const TierListProvider = ({ children }: { children: React.ReactNode }) => {
+export const TierListProvider = ({ children }: { children: React.ReactNode }) => {
     const [tierListData, setTierListData] = useState<TierListObject>(defaultTierList as TierListObject);
 
     const moveRow = (originalIndex: number, destinationIndex: number) => {
@@ -68,5 +68,3 @@ const TierListProvider = ({ children }: { children: React.ReactNode }) => {
         </TierListContext.Provider>
     );
 };
-
-export default TierListProvider;
