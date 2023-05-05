@@ -1,18 +1,36 @@
-import { useContext } from "react";
+import { LegacyRef, useContext, useEffect, useRef, useState } from "react";
 import { Row } from "./Row";
 import { Thumbnail } from "./Thumbnail";
 
 import "./App.css";
 import { Item } from "./Item";
 import TierListContext from "./context";
+import { NewItemDialog } from "./NewItemDialog";
+import { ItemProps } from "./types";
 
 export const TierList = () => {
-    const { tierList } = useContext(TierListContext);
+    const { tierList, createItem, moveRow } = useContext(TierListContext);
+    const [showCreateItemDialog, setShowCreateItemDialog] = useState(false);
+
+    const handleNewItemClick = () => {
+        setShowCreateItemDialog(true);
+    };
+
+    const handleCreateItem = (item: ItemProps) => {
+        createItem(item);
+        setShowCreateItemDialog(false);
+    };
 
     return (
         <>
+            {showCreateItemDialog && (
+                <NewItemDialog onClose={() => setShowCreateItemDialog(false)} callback={handleCreateItem} />
+            )}
+            <div style={{ display: "flex" }}>
+                <button onClick={handleNewItemClick}>New Item</button>
+            </div>
             <div className="row-container">
-                {tierList.rows.map((row) => {
+                {tierList.rows.map((row, index) => {
                     return (
                         <Row
                             key={row.thumbnail.text}
@@ -28,6 +46,10 @@ export const TierList = () => {
                                     />
                                 );
                             })}
+                            <div className="row-footer">
+                                <button onClick={() => moveRow(index, index - 1)}>Move Up</button>
+                                <button onClick={() => moveRow(index, index + 1)}>Move Down</button>
+                            </div>
                         </Row>
                     );
                 })}

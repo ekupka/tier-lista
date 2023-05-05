@@ -1,48 +1,48 @@
 export type ItemProps = {
-  id: string;
-  thumbnail: ThumbnailProps;
+    id: string;
+    thumbnail: ThumbnailProps;
 };
 
 export type RowProps = {
-  thumbnail: ThumbnailProps;
-  children: ItemProps[];
+    thumbnail: ThumbnailProps;
+    children: ItemProps[];
 };
 
 export type ThumbnailProps = {
-  text: string;
-  color: Color;
+    text: string;
+    bg: Color | string;
 };
 
 export type TierListProps = {
-  rows: RowProps[];
-  bench: ItemProps[];
+    rows: RowProps[];
+    bench: ItemProps[];
 };
 
 export type TierListObject = {
-  rows: [
-    {
-      thumbnail: {
-        text: string;
-        color: Color;
-      };
-      items: [
+    rows: [
         {
-          thumbnail: {
-            text: string;
-            color: Color;
-          };
+            thumbnail: {
+                text: string;
+                bg: Color;
+            };
+            items: [
+                {
+                    thumbnail: {
+                        text: string;
+                        bg: Color;
+                    };
+                }
+            ];
         }
-      ];
-    }
-  ];
-  bench: [
-    {
-      thumbnail: {
-        text: string;
-        color: Color;
-      };
-    }
-  ];
+    ];
+    bench: [
+        {
+            thumbnail: {
+                text: string;
+                bg: Color;
+            };
+        }
+    ];
 };
 
 type RGB = `rgb(${number}, ${number}, ${number})`;

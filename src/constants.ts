@@ -5,38 +5,38 @@ export const defaultTierList = {
         {
             thumbnail: {
                 text: "S",
-                color: "#63AA8C",
+                bg: "#63AA8C",
             },
             items: [] as {
                 thumbnail: {
                     text: string;
-                    color: Color;
+                    bg: Color;
                 };
             }[],
         },
         {
             thumbnail: {
                 text: "A",
-                color: "#4C9D50",
+                bg: "#4C9D50",
             },
             items: [],
         },
         {
             thumbnail: {
                 text: "B",
-                color: "#619036",
+                bg: "#619036",
             },
             items: [
                 {
                     thumbnail: {
                         text: "Example A",
-                        color: "#dd92d3",
+                        bg: "#dd92d3",
                     },
                 },
                 {
                     thumbnail: {
                         text: "Example B",
-                        color: "#ba84d4",
+                        bg: "#ba84d4",
                     },
                 },
             ],
@@ -44,28 +44,28 @@ export const defaultTierList = {
         {
             thumbnail: {
                 text: "C",
-                color: "#828220",
+                bg: "#828220",
             },
             items: [],
         },
         {
             thumbnail: {
                 text: "D",
-                color: "#85631D",
+                bg: "#85631D",
             },
             items: [],
         },
         {
             thumbnail: {
                 text: "E",
-                color: "#87401B",
+                bg: "#87401B",
             },
             items: [],
         },
         {
             thumbnail: {
                 text: "F",
-                color: "#8A1A18",
+                bg: "#8A1A18",
             },
             items: [],
         },
@@ -74,25 +74,25 @@ export const defaultTierList = {
         {
             thumbnail: {
                 text: "Example 1",
-                color: "#dd92d3",
+                bg: "#dd92d3",
             },
         },
         {
             thumbnail: {
                 text: "Example 2",
-                color: "#ba84d4",
+                bg: "#ba84d4",
             },
         },
         {
             thumbnail: {
                 text: "Example 3",
-                color: "#8e78d3",
+                bg: "#8e78d3",
             },
         },
         {
             thumbnail: {
                 text: "Example 4",
-                color: "#516fd0",
+                bg: "#516fd0",
             },
         },
     ],

@@ -22,6 +22,16 @@
     background-color: #333333;
 }
 
+.row-footer {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+ }
+ .row-footer button {
+    font-size: 10px;
+ }
+
 .colors {
     color: #8A1A18;
     color: #87401B;

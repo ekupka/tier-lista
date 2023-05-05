@@ -1,11 +1,25 @@
 import React, { useState } from "react";
 import { TierListContext } from "./TierList";
-import { TierListObject } from "./types";
+import { ItemProps, TierListObject } from "./types";
 import { defaultTierList } from "./constants";
 import { remove, set, indexOf } from "lodash";
 
 const TierListProvider = ({ children }: { children: React.ReactNode }) => {
     const [tierListData, setTierListData] = useState<TierListObject>(defaultTierList as TierListObject);
+
+    const moveRow = (originalIndex: number, destinationIndex: number) => {
+        setTierListData((tierList) => {
+            if (destinationIndex < 0 || destinationIndex > tierList.rows.length - 1) return tierList;
+            console.log("shouldMove", { originalIndex, destinationIndex });
+
+            const newRows = [...tierList.rows];
+            const row = tierList.rows[originalIndex];
+            newRows.splice(originalIndex, 1);
+            newRows.splice(destinationIndex, 0, row);
+
+            return { ...tierList, rows: newRows } as TierListObject;
+        });
+    };
 
     const moveItem = (itemId: string, rowId: string) => {
         console.log("shouldMove", { itemId, rowId });
@@ -38,7 +52,18 @@ const TierListProvider = ({ children }: { children: React.ReactNode }) => {
         });
     };
 
-    return <TierListContext.Provider value={{ tierList: tierListData, moveItem }}>{children}</TierListContext.Provider>;
+    const createItem = (item: ItemProps) => {
+        setTierListData((tierList) => {
+            const newBench = [...tierList.bench, item];
+            return { ...tierList, bench: newBench } as TierListObject;
+        });
+    };
+
+    return (
+        <TierListContext.Provider value={{ tierList: tierListData, moveItem, createItem, moveRow }}>
+            {children}
+        </TierListContext.Provider>
+    );
 };
 
 export default TierListProvider;
