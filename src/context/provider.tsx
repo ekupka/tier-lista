@@ -1,28 +1,28 @@
-import React, { useState } from "react";
 import { defaultTierList } from "@/constants";
 import { indexOf, remove, set } from "lodash";
-import { ItemProps, TierListObject } from "@/types";
+import { ItemProps, TierListProps } from "@/types";
+import { ReactNode, useState } from "react";
 import { TierListContext } from "@/context";
 
-export const TierListProvider = ({ children }: { children: React.ReactNode }) => {
-    const [tierListData, setTierListData] = useState<TierListObject>(defaultTierList as TierListObject);
+export const TierListProvider = ({ children }: { children: ReactNode }) => {
+    const [tierListData, setTierListData] = useState<TierListProps>(defaultTierList as TierListProps);
 
     const moveRow = (originalIndex: number, destinationIndex: number) => {
         setTierListData((tierList) => {
             if (destinationIndex < 0 || destinationIndex > tierList.rows.length - 1) return tierList;
-            console.log("shouldMove", { originalIndex, destinationIndex });
+            console.log("moveRow", { originalIndex, destinationIndex });
 
             const newRows = [...tierList.rows];
             const row = tierList.rows[originalIndex];
             newRows.splice(originalIndex, 1);
             newRows.splice(destinationIndex, 0, row);
 
-            return { ...tierList, rows: newRows } as TierListObject;
+            return { ...tierList, rows: newRows } as TierListProps;
         });
     };
 
     const moveItem = (itemId: string, rowId: string) => {
-        console.log("shouldMove", { itemId, rowId });
+        console.log("moveItem", { itemId, rowId });
 
         setTierListData((tierList) => {
             let item = tierList.bench.find((item) => item.thumbnail.text === itemId);
@@ -56,9 +56,11 @@ export const TierListProvider = ({ children }: { children: React.ReactNode }) =>
     };
 
     const createItem = (item: ItemProps) => {
+        console.log("createItem", { item });
+
         setTierListData((tierList) => {
             const newBench = [...tierList.bench, item];
-            return { ...tierList, bench: newBench } as TierListObject;
+            return { ...tierList, bench: newBench } as TierListProps;
         });
     };
 

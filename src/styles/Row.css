@@ -2,6 +2,7 @@
     width: 100%;
     display: flex;
     background-color: #222222;
+    margin: 4px;
 }
 
 .row-header {
@@ -27,8 +28,15 @@
     height: 100%;
     flex-direction: column;
     justify-content: center;
- }
- .row-footer button {
+}
+.row-footer div {
+     padding: 0 12px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex: 1;
+    background-color: #222222;
+    color: #777;
     font-size: 10px;
  }
 

@@ -4,7 +4,8 @@ import { useState } from "react";
 
 export const NewItemDialog = ({ onClose, callback }: { onClose: () => void; callback: (item: ItemProps) => void }) => {
     const [name, setName] = useState(`${getRandomInt()}`);
-    const [image, setImage] = useState(getRandomColor() as string);
+    const [image, setImage] = useState<string | undefined>();
+    const [color, setColor] = useState(getRandomColor());
     const [isImage, setIsImage] = useState(false);
 
     const handleUploadImage = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,12 +19,13 @@ export const NewItemDialog = ({ onClose, callback }: { onClose: () => void; call
     };
 
     const onCreate = () => {
-        if (name && image) {
+        if (name && (image || color)) {
             const item: ItemProps = {
                 id: name,
                 thumbnail: {
-                    bg: image as Color,
                     text: name,
+                    color,
+                    image,
                 },
             };
             callback(item);
@@ -31,8 +33,8 @@ export const NewItemDialog = ({ onClose, callback }: { onClose: () => void; call
     };
 
     const handleSelectColor = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const color = event.target.value;
-        setImage(color);
+        const color = event.target.value as Color;
+        setColor(color);
     };
 
     return (
@@ -54,13 +56,13 @@ export const NewItemDialog = ({ onClose, callback }: { onClose: () => void; call
                     />
                 ) : (
                     <label>
-                        <input onChange={handleSelectColor} type="color" id="head" name="head" value={image} />
+                        <input onChange={handleSelectColor} type="color" id="head" name="head" value={color} />
                         Color
                     </label>
                 )}
                 <div style={{ display: "flex", gap: "12px" }}>
                     <button onClick={onClose}>Cancel</button>
-                    <button disabled={!image || !name} onClick={onCreate}>
+                    <button disabled={(!image && !color) || !name} onClick={onCreate}>
                         Create
                     </button>
                 </div>

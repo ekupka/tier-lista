@@ -1,98 +1,118 @@
-import { Color } from "./types/types";
+import { Color } from "./types";
 
 export const defaultTierList = {
     rows: [
         {
+            id: "S",
             thumbnail: {
                 text: "S",
-                bg: "#63AA8C",
+                color: "#63AA8C",
             },
             items: [] as {
+                id: string;
                 thumbnail: {
                     text: string;
-                    bg: Color;
+                    color: Color;
                 };
             }[],
         },
+
         {
+            id: "A",
             thumbnail: {
                 text: "A",
-                bg: "#4C9D50",
+                color: "#4C9D50",
             },
             items: [],
         },
+
         {
+            id: "B",
             thumbnail: {
                 text: "B",
-                bg: "#619036",
+                color: "#619036",
             },
             items: [
                 {
+                    id: "Example A",
                     thumbnail: {
                         text: "Example A",
-                        bg: "#dd92d3",
+                        color: "#dd92d3",
                     },
                 },
                 {
+                    id: "Example B",
                     thumbnail: {
                         text: "Example B",
-                        bg: "#ba84d4",
+                        color: "#ba84d4",
                     },
                 },
             ],
         },
+
         {
+            id: "C",
             thumbnail: {
                 text: "C",
-                bg: "#828220",
+                color: "#828220",
             },
             items: [],
         },
+
         {
+            id: "D",
             thumbnail: {
                 text: "D",
-                bg: "#85631D",
+                color: "#85631D",
             },
             items: [],
         },
+
         {
+            id: "E",
             thumbnail: {
                 text: "E",
-                bg: "#87401B",
+                color: "#87401B",
             },
             items: [],
         },
+
         {
+            id: "F",
             thumbnail: {
                 text: "F",
-                bg: "#8A1A18",
+                color: "#8A1A18",
             },
             items: [],
         },
     ],
     bench: [
         {
+            id: "Example 1",
             thumbnail: {
                 text: "Example 1",
-                bg: "#dd92d3",
+                color: "#dd92d3",
             },
         },
         {
+            id: "Example 2",
             thumbnail: {
                 text: "Example 2",
-                bg: "#ba84d4",
+                color: "#ba84d4",
             },
         },
         {
+            id: "Example 3",
             thumbnail: {
                 text: "Example 3",
-                bg: "#8e78d3",
+                color: "#8e78d3",
             },
         },
         {
+            id: "Example 4",
             thumbnail: {
                 text: "Example 4",
-                bg: "#516fd0",
+                color: "#516fd0",
             },
         },
     ],

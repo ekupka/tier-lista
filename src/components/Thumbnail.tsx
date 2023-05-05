@@ -1,17 +1,13 @@
 import { ThumbnailProps } from "@/types";
 
-export const Thumbnail = ({ text, bg }: ThumbnailProps) => {
-    const isColor = (color: string) => {
-        return color.startsWith("#");
-    };
-
+export const Thumbnail = ({ text, color, image }: ThumbnailProps) => {
     return (
         <div
             key={text}
             style={{
-                backgroundColor: isColor(bg) ? bg : "white",
+                backgroundColor: color ? color : "white",
                 color: "white",
-                backgroundImage: isColor(bg) ? "unset" : `url(${bg})`,
+                backgroundImage: image ? "unset" : `url(${image})`,
                 backgroundSize: "cover",
                 borderRadius: "0.5rem",
                 height: "5rem",
