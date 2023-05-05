@@ -1,6 +1,6 @@
 {
-  "name": "tier-list",
-  "homepage": "https://ekupka.github.io/tier-lista",
+  "name": "tier-lista",
+  "homepage": "https://<username>.github.io/<repo>/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
