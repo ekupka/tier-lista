@@ -1,4 +1,4 @@
-import { Color, ItemProps } from "./types";
+import { Color } from "./types";
 
 export const defaultTierList = {
     rows: [

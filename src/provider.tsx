@@ -26,19 +26,22 @@ const TierListProvider = ({ children }: { children: React.ReactNode }) => {
 
         setTierListData((tierList) => {
             let item = tierList.bench.find((item) => item.thumbnail.text === itemId);
-
+            let prevRow: "bench" | number = "bench";
             if (item === undefined)
-                tierList.rows.forEach((row) => {
+                tierList.rows.forEach((row, index) => {
                     const rowItem = row.items.find((item) => item.thumbnail.text === itemId);
-                    if (rowItem) item = rowItem;
+                    if (rowItem) {
+                        item = rowItem;
+                        prevRow = index;
+                    }
                 });
 
             if (!item) return tierList;
+
             const newTierList = { ...tierList };
-            remove(newTierList.bench, (item) => item.thumbnail.text === itemId);
-            newTierList.rows.forEach((row, index) => {
-                remove(newTierList.rows[index].items, (item) => item.thumbnail.text === itemId);
-            });
+
+            if (prevRow === "bench") remove(newTierList.bench, (item) => item.thumbnail.text === itemId);
+            else remove(newTierList.rows[prevRow].items, (item) => item.thumbnail.text === itemId);
 
             if (rowId === "bench") newTierList.bench.push(item);
             else {

@@ -8,14 +8,13 @@ export const NewItemDialog = ({ onClose, callback }: { onClose: () => void; call
     const [isImage, setIsImage] = useState(false);
 
     const handleUploadImage = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const imagePath = event.target.value;
-        const reader = new FileReader();
-        reader.addEventListener("load", () => {
-            reader.result && setImage(reader.result as string);
-        });
-        reader.readAsDataURL(event.target.files![0]);
-
-        setImage(imagePath);
+        if (event.target.files && event.target.files.length >= 1) {
+            const reader = new FileReader();
+            reader.addEventListener("load", () => {
+                reader.result && setImage(reader.result as string);
+            });
+            reader.readAsDataURL(event.target.files[0]);
+        }
     };
 
     const onCreate = () => {

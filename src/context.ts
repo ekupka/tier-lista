@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { Color, ItemProps, TierListObject } from "./types";
+import { ItemProps, TierListObject } from "./types";
 import { defaultTierList } from "./constants";
 
 type TierListContextProps = {

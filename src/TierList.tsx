@@ -1,4 +1,4 @@
-import { LegacyRef, useContext, useEffect, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { Row } from "./Row";
 import { Thumbnail } from "./Thumbnail";
 
